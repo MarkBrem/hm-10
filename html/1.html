@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Таймер інтервалу</h1>
+    <div id="message-container"></div>
+
+    <script>let count = 0;
+        const intervalId = setInterval(() => {
+            count++;
+            const messageContainer = document.getElementById('message-container');
+            messageContainer.innerHTML += `<p>Повідомлення ${count}</p>`;
+            
+            if (count === 5) {
+                clearInterval(intervalId);
+            }
+        }, 1000);
+        </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .target {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Інтерактивна гра</h1>
+    <div id="score">Очки: 0</div>
+    <div class="target" id="target"></div>
+
+    <script>
+        let score = 0;
+let timeLeft = 10;
+const target = document.getElementById('target');
+const scoreDisplay = document.getElementById('score');
+
+function moveTarget() {
+    const x = Math.floor(Math.random() * (window.innerWidth - 50));
+    const y = Math.floor(Math.random() * (window.innerHeight - 50));
+    target.style.left = x + 'px';
+    target.style.top = y + 'px';
+}
+
+target.addEventListener('click', () => {
+    score++;
+    scoreDisplay.textContent = `Очки: ${score}`;
+    moveTarget();
+});
+
+const intervalId = setInterval(() => {
+    timeLeft--;
+    if (timeLeft <= 0) {
+        clearInterval(intervalId);
+        alert(`Гра закінчена! Ваші очки: ${score}`);
+        target.style.display = 'none';
+    }
+}, 1000);
+
+moveTarget();
+    </script>
+</body>
+</html>
